@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  --accent: #6B7FD4;
+  --accent-soft: #8B9FE8;
+  --accent-muted: #E8EBFA;
+  --bg: #f8f8fa;
+  --bg-card: #ffffff;
+  --bg-hover: #f2f2f6;
+  --border: #e8e8ee;
+  --text: #1a1a2e;
+  --text-muted: #6b6b80;
+  --text-faint: #a0a0b8;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --today: #6B7FD4;
+}
+
+[data-theme="dark"] {
+  --accent: #7B8FE4;
+  --accent-soft: #9BAFFA;
+  --accent-muted: #1e2240;
+  --bg: #0f0f18;
+  --bg-card: #1a1a28;
+  --bg-hover: #22223a;
+  --border: #2a2a40;
+  --text: #e8e8f8;
+  --text-muted: #8888a8;
+  --text-faint: #4a4a68;
+  --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.5);
+  --today: #7B8FE4;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-faint); }
+
+* { -webkit-tap-highlight-color: transparent; }
+
+input[type="date"], input[type="time"] { color-scheme: light; }
+[data-theme="dark"] input[type="date"], [data-theme="dark"] input[type="time"] { color-scheme: dark; }
+
+.miro-grid {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+@keyframes sticker-pop {
+  0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+  70% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.sticker-pop { animation: sticker-pop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.2s ease forwards; }

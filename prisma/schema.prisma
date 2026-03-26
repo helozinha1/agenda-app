@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  title       String
+  color       String   @default("#C66F80")
+  date        DateTime
+  startTime   String?
+  endTime     String?
+  allDay      Boolean  @default(false)
+  description String?
+  position    Int      @default(0)
+
+  // Repetição
+  repeat      RepeatType @default(NONE)
+  repeatUntil DateTime?
+  repeatDays  Int[]      // 0=dom, 1=seg, ..., 6=sáb (para WEEKLY)
+
+  categoryId  String?
+  category    Category? @relation(fields: [categoryId], references: [id])
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([date])
+}
+
+model Category {
+  id    String @id @default(cuid())
+  name  String
+  color String @default("#9FAA74")
+  tasks Task[]
+}
+
+enum RepeatType {
+  NONE
+  DAILY
+  WEEKLY
+  MONTHLY
+}
