@@ -1,4 +1,4 @@
-# 🍵🍓 matcha strawberry — agenda
+# 🍵🍓 Agenda 
 
 Agenda pessoal estética com cores customizáveis, visualização por dia/semana/mês, drag & drop e repetição de tarefas.
 
